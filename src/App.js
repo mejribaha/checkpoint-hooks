@@ -3,6 +3,8 @@ import { Data } from "./Datas";
 import Nav from "./component/filter/Nav";
 import MovieList from "./component/movieList/movieList";
 import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import Trailer from "./component/moviDetails/Trailer"
 
 function App() {
   const [search, setSearch] = useState("");
@@ -16,7 +18,14 @@ function App() {
         movie={movie}
         setMovie={setMovie}
       />
-      <MovieList search={search} star={star} movie={movie} />
+
+      <Routes>
+        <Route path="/movie/:id" element={<Trailer movie={movie}/>} />
+        <Route
+          path="/"
+          element={<MovieList search={search} star={star} movie={movie} />}
+        />
+      </Routes>
     </div>
   );
 }

@@ -3,14 +3,21 @@ import "./moviCard.css";
 import ReactStars from "react-stars";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 function movieCard(props,i) {
   return (
     <div className="cards">
       <Card key={i}>
-        <Card.Img variant="top" src={props.movie.Photo} style={{ height: "30rem" }} />
+        <Card.Img
+          variant="top"
+          src={props.movie.Photo}
+          style={{ height: "30rem" }}
+        />
         <Card.Body style={{ height: "30rem" }}>
-          <Card.Title style={{ fontSize: "2rem" }}>{props.movie.Title}</Card.Title>
+          <Card.Title style={{ fontSize: "2rem" }}>
+            {props.movie.Title}
+          </Card.Title>
           <br />
           <Card.Subtitle>
             <p style={{ fontSize: "1.3rem", color: "black" }}>Category:</p>
@@ -39,7 +46,9 @@ function movieCard(props,i) {
           </Card.Subtitle>
           <br />
 
-          <Button variant="primary">Show Details</Button>
+          <Link to={`/movie/${props.movie.id}`}>
+            <Button variant="primary">Show Details</Button>
+          </Link>
         </Card.Body>
       </Card>
     </div>
